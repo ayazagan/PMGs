@@ -92,7 +92,7 @@ fit.control <- trainControl(method = "repeatedcv", number = 10, repeats = 5,
                             summaryFunction = twoClassSummary, classProbs = TRUE, allowParallel = F, savePredictions = T)
 
 sbp <- sbp.fromADBA(PMGs, SAMPLEDATA$Status) # get discriminant balances
-sbp <- sbp.subset(sbp) # get distal balances only
+sbp <- sbp.subset(sbp,ternary = TRUE, ratios = TRUE) # get distal balances only
 
 compBiomarkers <- as.data.frame(balance.fromSBP(x=PMGs, y = sbp)) 
 compBiomarkers.labeled <- addLabel(data.distalBal.pmg,SAMPLEDATA$Status)
